@@ -10,7 +10,15 @@ class Todos extends Component {
       todos: TodoStore.getAll()
     }
   }
-
+  
+  // storeが変更されるとgetAllをし直す reduxだと自動で見てくれるよね
+  componentDidMount(){
+    TodoStore.on("chnage", ()=>{
+      this.setState({
+        todos: TodoStore.getAll()
+      })
+    })
+  }
 
   render(){
     const todos = this.state.todos
