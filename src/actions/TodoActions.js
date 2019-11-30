@@ -9,7 +9,7 @@ export function createTodo(text){
 
 export function deleteTodo(id){
   dispatcher.dispatch({
-    type: "DELERE_TODO",
+    type: "DELETE_TODO",
     id
   })
 }

@@ -21,18 +21,29 @@ class Todos extends Component {
     })
   }
 
-  createTodo(){
-     TodoActions.createTodo("New todo")
+  createTodo(todo){
+     TodoActions.createTodo(todo.id)
   }
+
+  deleteTodo(todo_id){
+    TodoActions.deleteTodo(todo_id)
+ }
+
+  // reloadTodos(){
+
+  //   TodoActions.reloadTodos();
+
+  // }
 
   render(){
     const todos = this.state.todos
     const TodoComments = todos.map((todo)=> {
-      return <Todo key={todo.id} {...todo}/>
+      return <Todo key={todo.id} todo={todo} deleteTodo={()=> this.deleteTodo(todo.id)}/>
     })
     return(
       <div>
-        <button onClick={()=> this.createTodo()}>add todo</button>
+        {/* <button onClick={()=> this.createTodo()}>add todo</button> */}
+        <button onClick={()=> this.reloadTodos()}>reload todo</button>
         <h1>Todos</h1>
         {TodoComments}
       </div>  
