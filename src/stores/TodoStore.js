@@ -31,8 +31,13 @@ class TodoStore extends EventEmitter{
   getAll(){
     return this.todos;
   }
+
+
+  handleAction(action){
+    console.log("todo store recieved", action)
+  }
 }
 
 const todoStore = new TodoStore;
-window.todoStore = todoStore;
+dispatcher.register(todoStore.handleAction.bind(todoStore))
 export default todoStore;
