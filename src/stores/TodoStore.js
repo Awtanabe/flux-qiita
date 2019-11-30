@@ -36,7 +36,7 @@ class TodoStore extends EventEmitter{
 
   handleAction(action){
     switch(action.type){
-      case "CZREATE_TODO":{
+      case "CREATE_TODO":{
         this.createTodo(action.text)
       }
     }

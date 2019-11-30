@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { EventEmitter } from "events";
 import Todo from '../components/todo'
 import TodoStore from '../stores/TodoStore'
+import * as TodoActions from '../actions/TodoActions'
 
 class Todos extends Component {
   constructor(props){
@@ -13,11 +14,15 @@ class Todos extends Component {
   
   // storeが変更されるとgetAllをし直す reduxだと自動で見てくれるよね
   componentDidMount(){
-    TodoStore.on("chnage", ()=>{
+    TodoStore.on("change", ()=>{
       this.setState({
         todos: TodoStore.getAll()
       })
     })
+  }
+
+  createTodo(){
+     TodoActions.createTodo("New todo")
   }
 
   render(){
@@ -27,6 +32,7 @@ class Todos extends Component {
     })
     return(
       <div>
+        <button onClick={()=> this.createTodo()}>add todo</button>
         <h1>Todos</h1>
         {TodoComments}
       </div>  
