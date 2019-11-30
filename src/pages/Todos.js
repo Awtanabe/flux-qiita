@@ -1,23 +1,13 @@
 import React, {Component} from 'react'
 import { EventEmitter } from "events";
 import Todo from '../components/todo'
+import TodoStore from '../stores/TodoStore'
 
 class Todos extends Component {
   constructor(props){
     super(props)
     this.state = {
-      todos: [
-        {
-          id: 113464613,
-          text: "Go Shopping",
-          complete: false
-        },
-        {
-          id: 235684679,
-          text: "Pay Bills",
-          complete: false
-        }
-      ]
+      todos: TodoStore.getAll()
     }
   }
 
